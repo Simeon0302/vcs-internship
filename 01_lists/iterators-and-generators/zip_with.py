@@ -5,12 +5,16 @@ def concat3(x, y, z):
     return x + y + z
 
 
-def zip_with(func, first_iterable, second_iterable, third_iterable):
-    list = [first_iterable, second_iterable, third_iterable]
-    min_length = len(reduce(lambda a, b: a if len(a) < len(b) else b, list))
+def zip_with(func, *iterables):
+    min_length = len(reduce(
+    lambda a, b: a if len(a) < len(b) else b,
+    iterables))
 
     for i in range(0, min_length):
-        yield func(first_iterable[i], second_iterable[i], third_iterable[i])
+        arguments_for_func = []
+        for iterable in iterables:
+            arguments_for_func.append(iterable[i])
+        yield func(*arguments_for_func)
 
 
 first_names = ['John', 'Miles']
