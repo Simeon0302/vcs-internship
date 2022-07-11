@@ -1,12 +1,14 @@
 const identity = x => x;
 
-const compose = (func, times) => times == 0 ? identity : n => func(compose(func, times - 1)(n));
+const compose = function (a, b) {
+    return arg => b(a(arg))
+}
 
 function* iterate(func) {
-    let counter = 0;
+    let currentFunc = identity;
     while (true) {
-        yield compose(func, counter);
-        counter++;
+        yield currentFunc;
+        currentFunc = compose(currentFunc, func)
     }
 }
 
