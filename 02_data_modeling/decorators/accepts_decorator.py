@@ -8,8 +8,7 @@ def accepts(*types_of_args):
                         .format(index,
                                 func.__name__,
                                 types_of_args[index].__name__))
-                    return
-            func(*func_args)
+            return func(*func_args)
         return wrapper
     return inner
 
@@ -20,7 +19,7 @@ def say_hello(name):
     return "Hello, I am {}".format(name)
 
 
-say_hello(4)
+print(say_hello(4))
 
 
 @accepts(str)
@@ -28,10 +27,13 @@ def say_hello(name):
     return "Hello, I am {}".format(name)
 
 
-say_hello("Hacker")
+print(say_hello("Hacker"))
 
 
 @accepts(str, int)
 def deposit(name, money):
     print("{} sends {} $!".format(name, money))
     return True
+
+
+deposit("Fred", 10)
