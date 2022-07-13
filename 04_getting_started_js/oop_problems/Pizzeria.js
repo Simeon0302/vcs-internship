@@ -40,15 +40,21 @@ class PizzaOrder {
         return this.#id;
     }
 
-    start() {
-        setTimeout(() => {
-            this.#whenPizzaReadyFunc(this.#pizza, this);
-        }, this.#pizza.timeToMake);
+    async start() {
+        await this.timer(this.#pizza.timeToMake);
+        this.#whenPizzaReadyFunc(this.#pizza, this);
+    }
+
+    timer(time) {
+        return new Promise((res) => {
+            setTimeout(() => {
+                res();
+            }, time);
+        });
     }
 
     ready(callback) {
         this.#whenPizzaReadyFunc = callback;
-        console.log('Callback is ready');
     }
 }
 
