@@ -1,21 +1,20 @@
-const wordsHistogram = function (string) {
-    const arr = string.toLowerCase().replace(/[^a-z\s]/g, "").split(" ");
+const wordsHistogram = function(string) {
+    const arr = string.toLowerCase().replace(/[^a-z\s]/g, '').split(' ');
     const resultObj = {};
 
-    arr.forEach(function (item) {
+    arr.forEach(function(item) {
         if (!resultObj.hasOwnProperty(item)) {
             resultObj[item] = 0;
         }
         resultObj[item] += 1;
     });
-    
     console.log(resultObj);
 };
 
-var str = "A function is a function with a very functional function!";
+const str = 'A function is a function with a very functional function!';
 wordsHistogram(str);
 
-//Result must be:
+// Result must be:
 
 // {
 //     "a" : 3,
