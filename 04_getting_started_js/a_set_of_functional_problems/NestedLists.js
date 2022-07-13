@@ -21,7 +21,7 @@ const ul = function(items) {
             insideHTML += `<li>${itemObj.label}</li>`;
         }
         if (itemObj.hasOwnProperty('children')) {
-            insideHTML += ol(itemObj['children']);
+            insideHTML += ul(itemObj['children']);
         }
     });
 
