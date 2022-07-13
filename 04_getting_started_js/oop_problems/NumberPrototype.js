@@ -1,14 +1,12 @@
-function times(action){
-    let num = this
+// eslint-disable-next-line no-extend-native
+Number.prototype.times = function(action) {
+    let num = this;
     while (num > 0) {
         action();
         num--;
     }
-}
+};
 
-Number.prototype.times = times;
-
-
-(5).times(function () {
-    console.log("OMG!");
-})
+(5).times(function() {
+    console.log('OMG!');
+});
