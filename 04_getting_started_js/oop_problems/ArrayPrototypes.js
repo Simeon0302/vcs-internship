@@ -24,7 +24,32 @@ Array.prototype.average = function() {
 };
 
 // Tests
-console.log([1, 2, 3, 4].first());
-console.log([].range(1, 10));
-console.log([1, 2, 3, 4, 5].sum());
-console.log([1, 2, 3, 4, 5].average());
+const assert = require('assert');
+
+try {
+    assert.equal([1, 2, 3, 4].first(), 1);
+    console.log('First test passed');
+} catch (e) {
+    console.log('First test failed');
+}
+
+try {
+    assert.equal([].range(1, 5).toString(), '[1, 2, 3, 4, 5]');
+    console.log('Second test passed');
+} catch (e) {
+    console.log('Second test failed');
+}
+
+try {
+    assert.equal([1, 2, 3, 4, 5].sum(), 15);
+    console.log('Third test passed');
+} catch (e) {
+    console.log('Third test failed');
+}
+
+try {
+    assert.equal([1, 2, 3, 4, 5].average(), 3);
+    console.log('Fourth test passed');
+} catch (e) {
+    console.log('Fourth test failed');
+}
