@@ -38,10 +38,16 @@ class Point {
 }
 
 // Tests
-const point = new Point(0, 0);
-console.log(point.toString());
+const assert = require('assert');
 
-point.xInc();
-point.yDec();
+try {
+    const point = new Point(0, 0);
 
-console.log(point.toString());
+    point.xInc();
+    point.yDec();
+
+    assert.equal(point.toString(), 'Point @ 1, -1');
+    console.log('Test passed');
+} catch (e) {
+    console.log('Test failed');
+}
