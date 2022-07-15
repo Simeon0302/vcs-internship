@@ -1,18 +1,35 @@
-/* eslint-disable prefer-rest-params */
-const zip = function() {
+const zip = function(...args) {
     const resultList = [];
 
-    for (let i = 0; i < arguments.length; i++) {
-        resultList[i] = [];
-        for (let j = 0; j < arguments.length; j++) {
-            resultList[i].push(arguments[i][j]);
-        }
+    for (let index = 0; index < args[0].length; index++) {
+        resultList[index] = [];
+        args.forEach((arr) => {
+            resultList[index].push(arr[index]);
+        });
     }
+
     return resultList;
 };
 
-console.log(zip([1, 2, 3], [4, 5, 6]));
-// [ [1, 4], [2, 4], [3, 6] ]
+// Tests
+const assert = require('assert');
 
-console.log(zip([1, 2, 3], [4, 5, 6], [7, 8, 9]));
-// [ [1, 4, 7], [2, 4, 8], [3, 6, 9] ]
+try {
+    assert.equal(
+        zip([1, 2, 3], [4, 5, 6]).toString(),
+        [[1, 4], [2, 5], [3, 6]].toString());
+
+    console.log('First test passed');
+} catch (e) {
+    console.log('First test failed');
+}
+
+try {
+    assert.equal(
+        zip([1, 2, 3], [4, 5, 6], [7, 8, 9]).toString(),
+        [[1, 4, 7], [2, 5, 8], [3, 6, 9]].toString());
+
+    console.log('Second test passed');
+} catch (e) {
+    console.log('Second test failed');
+}
