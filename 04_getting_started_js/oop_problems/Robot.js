@@ -75,9 +75,17 @@ class Robot {
     }
 }
 
-const robot = new Robot(new Point(0, 0));
+// Tests
+const assert = require('assert');
 
-robot.moveLeft(10);
-robot.moveDown(5);
+try {
+    const robot = new Robot(new Point(0, 0));
 
-console.log(robot.getPosition().toString());
+    robot.moveLeft(10);
+    robot.moveDown(5);
+
+    assert.equal(robot.getPosition().toString(), 'Point @ -10, 5');
+    console.log('Test passed');
+} catch (e) {
+    console.log('Test failed');
+}
