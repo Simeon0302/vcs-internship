@@ -22,9 +22,33 @@ String.prototype.blank = function() {
     return this.trim().length === 0;
 };
 
-console.log('javascript'.capitalize());
-console.log('border_bottom_width'.dasharize());
-console.log('bobi'.times(5));
-console.log('  '.blank()); // true
-console.log(''.blank()); // true
-console.log(' a'.blank()); // false
+// Tests
+const assert = require('assert');
+
+try {
+    assert.equal('javascript'.capitalize(), 'JAVASCRIPT');
+    console.log('First test passed');
+} catch (e) {
+    console.log('First test failed');
+}
+
+try {
+    assert.equal('border_bottom_width'.dasharize(), 'border-bottom-width');
+    console.log('Second test passed');
+} catch (e) {
+    console.log('Second test failed');
+}
+
+try {
+    assert.equal('  '.blank(), true);
+    console.log('Third test passed');
+} catch (e) {
+    console.log('Third test failed');
+}
+
+try {
+    assert.equal(' a'.blank(), false);
+    console.log('Fourth test passed');
+} catch (e) {
+    console.log('Fourth test failed');
+}
