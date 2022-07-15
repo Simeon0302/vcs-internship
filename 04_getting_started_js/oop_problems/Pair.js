@@ -23,8 +23,41 @@ class Pair {
 
 
 // Test
-const p = new Pair(4, 6);
+const assert = require('assert');
 
-p.combine(function(left, right) {
-    return left + right;
-}); // 10
+try {
+    const p1 = new Pair(4, 6);
+    const p2 = new Pair(4, 6);
+
+    assert.equal(p1.equals(p2), true);
+    console.log('First test passed');
+} catch (e) {
+    console.log('First test failed');
+}
+
+try {
+    const p = new Pair(4, 6);
+
+    assert(p.toString(), '(4, 6)');
+    console.log('Second test passed');
+} catch (e) {
+    console.log('Second test failed');
+}
+
+try {
+    const p = new Pair(4, 6);
+
+    assert.equal(p.toList().toString(), [4, 6]);
+    console.log('Third test passed');
+} catch (e) {
+    console.log('Third test failed');
+}
+
+try {
+    const p = new Pair(4, 6);
+    const combineFunction = (left, right) => left + right;
+    assert.equal(p.combine(combineFunction), 10);
+    console.log('Forth test passed');
+} catch (e) {
+    console.log('Forth test failed');
+}
